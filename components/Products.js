@@ -60,7 +60,7 @@ export default function Products() {
               {/* Image & Tag */}
               <div className="relative mb-4">
                 <div className="w-full h-48 relative rounded-2xl overflow-hidden">
-                  <Image src={product.image} alt={product.name} layout="fill" objectFit="cover" />
+                  <Image src={product.image} alt={product.name} layout="fill" objectFit="contain" />
                 </div>
                 {product.tag && (
                   <span
