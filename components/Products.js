@@ -5,7 +5,7 @@ const products = [
   {
     id: 1,
     name: 'Strawberry Matcha Latte',
-    description: 'Classic butter cookie infused with ceremonial-grade matcha. Melt-in-your-mouth texture.',
+    description: 'A dreamy blend of sweet strawberry and earthy matcha in every bite. Light, fragrant, and perfectly balanced.',
     price: '$15.00',
     image: '/strawberry-matcha-latte.jpg',
     tag: 'Best Seller',
@@ -14,7 +14,7 @@ const products = [
   {
     id: 2,
     name: 'Banana Bread Chocolate Chip',
-    description: 'Chewy matcha cookie loaded with dark chocolate chips. A perfect earthy-sweet combo.',
+    description: 'Moist and rich banana bread flavor packed with gooey chocolate chips. Soft, chewy, and indulgent.',
     price: '$18.00',
     image: '/banana-bread-choc-chip.jpg',
     tag: 'New',
@@ -23,7 +23,7 @@ const products = [
   {
     id: 3,
     name: 'Strawberry Pocky',
-    description: 'Traditional Japanese flavour pairing — smooth red bean paste in a crisp matcha shell.',
+    description: 'Inspired by the classic Japanese snack — a crisp, sweet strawberry-flavored cookie with a satisfying crunch.',
     price: '$20.00',
     image: '/strawberry-pocky.jpg',
     tag: 'Popular',
@@ -35,10 +35,18 @@ function NotifyButton() {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!email) return;
+    setLoading(true);
+    await fetch('/api/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+    setLoading(false);
     setSubmitted(true);
   }
 
@@ -62,9 +70,10 @@ function NotifyButton() {
         />
         <button
           type="submit"
-          className="bg-matcha-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-matcha-700 transition-colors"
+          disabled={loading}
+          className="bg-matcha-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-matcha-700 transition-colors disabled:opacity-60"
         >
-          Notify Me
+          {loading ? '...' : 'Notify Me'}
         </button>
       </form>
     );
@@ -127,10 +136,10 @@ export default function Products() {
               <h3 className="font-serif text-xl font-bold text-matcha-900 mb-2">{product.name}</h3>
               <p className="text-matcha-600 text-sm leading-relaxed flex-1 mb-4">{product.description}</p>
 
-              {/* Price & Notify */}
-              <div className="flex items-center justify-between mt-auto flex-wrap gap-2">
-                <span className="text-matcha-700 font-bold text-lg">{product.price}</span>
+              {/* Notify */}
+              <div className="flex items-center justify-end mt-auto flex-wrap gap-2">
                 <NotifyButton />
+
               </div>
             </div>
           ))}
