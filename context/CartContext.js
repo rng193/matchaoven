@@ -39,7 +39,7 @@ export function CartProvider({ children }) {
 
   const totalItems = items.reduce((sum, i) => sum + i.qty, 0);
   const totalPrice = items.reduce((sum, i) => {
-    const price = parseFloat(i.price.replace('RM ', ''));
+    const price = parseFloat(i.price.replace('$', ''));
     return sum + price * i.qty;
   }, 0);
 

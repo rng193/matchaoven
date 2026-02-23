@@ -97,7 +97,7 @@ export default function CartDrawer() {
                       </svg>
                     </button>
                     <span className="text-matcha-700 font-bold text-sm">
-                      RM {(parseFloat(item.price.replace('RM ', '')) * item.qty).toFixed(2)}
+                      ${(parseFloat(item.price.replace('$', '')) * item.qty).toFixed(2)}
                     </span>
                   </div>
                 </li>
@@ -111,7 +111,7 @@ export default function CartDrawer() {
           <div className="border-t border-matcha-100 px-6 py-5 space-y-4 bg-white">
             <div className="flex justify-between text-matcha-700 text-sm">
               <span>Subtotal</span>
-              <span className="font-semibold">RM {totalPrice.toFixed(2)}</span>
+              <span className="font-semibold">${totalPrice.toFixed(2)}</span>
             </div>
             <div className="flex justify-between text-matcha-700 text-sm">
               <span>Delivery</span>
@@ -119,7 +119,7 @@ export default function CartDrawer() {
             </div>
             <div className="flex justify-between text-matcha-900 font-bold text-lg border-t border-matcha-100 pt-3">
               <span>Total</span>
-              <span>RM {totalPrice.toFixed(2)}</span>
+              <span>${totalPrice.toFixed(2)}</span>
             </div>
             <Link href="/checkout">
               <a

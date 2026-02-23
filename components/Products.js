@@ -1,5 +1,5 @@
+import { useState } from 'react';
 import Image from 'next/image';
-import { useCart } from '../context/CartContext';
 
 const products = [
   {
@@ -31,22 +31,73 @@ const products = [
   },
 ];
 
-export default function Products() {
-  const { addItem } = useCart();
+function NotifyButton() {
+  const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!email) return;
+    setSubmitted(true);
+  }
+
+  if (submitted) {
+    return (
+      <p className="text-matcha-600 text-sm font-semibold">
+        ✓ We'll notify you!
+      </p>
+    );
+  }
+
+  if (open) {
+    return (
+      <form onSubmit={handleSubmit} className="flex gap-2 w-full mt-2">
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="your@email.com"
+          className="flex-1 border border-matcha-200 rounded-full px-3 py-1.5 text-sm text-matcha-900 placeholder-matcha-300 focus:outline-none focus:ring-2 focus:ring-matcha-400"
+        />
+        <button
+          type="submit"
+          className="bg-matcha-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-matcha-700 transition-colors"
+        >
+          Notify Me
+        </button>
+      </form>
+    );
+  }
+
+  return (
+    <button
+      onClick={() => setOpen(true)}
+      className="border-2 border-matcha-500 text-matcha-600 px-5 py-2 rounded-full text-sm font-semibold hover:bg-matcha-50 transition-colors"
+    >
+      Notify Me
+    </button>
+  );
+}
+
+export default function Products() {
   return (
     <section id="products" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-6">
           <span className="inline-block bg-matcha-100 text-matcha-700 text-sm font-semibold px-4 py-1 rounded-full mb-4 uppercase tracking-widest">
             Our Menu
           </span>
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-matcha-900 mb-4">
             Signature Cookies
           </h2>
-          <p className="text-matcha-600 text-lg max-w-xl mx-auto">
-            Each variety is baked fresh to order and shipped within 48 hours.
+        </div>
+
+        {/* Out of stock banner */}
+        <div className="bg-cream-100 border border-cream-300 rounded-2xl px-6 py-4 text-center mb-12">
+          <p className="text-matcha-700 font-medium">
+            🍵 We're currently restocking our ingredients — cookies coming soon! Enter your email on any product to be the first to know.
           </p>
         </div>
 
@@ -63,27 +114,23 @@ export default function Products() {
                   <Image src={product.image} alt={product.name} layout="fill" objectFit="contain" />
                 </div>
                 {product.tag && (
-                  <span
-                    className={`absolute top-3 right-3 ${product.tagColor} text-white text-xs font-bold px-3 py-1 rounded-full`}
-                  >
+                  <span className={`absolute top-3 right-3 ${product.tagColor} text-white text-xs font-bold px-3 py-1 rounded-full`}>
                     {product.tag}
                   </span>
                 )}
+                <span className="absolute top-3 left-3 bg-white text-matcha-600 text-xs font-bold px-3 py-1 rounded-full border border-matcha-200">
+                  Out of Stock
+                </span>
               </div>
 
               {/* Info */}
               <h3 className="font-serif text-xl font-bold text-matcha-900 mb-2">{product.name}</h3>
               <p className="text-matcha-600 text-sm leading-relaxed flex-1 mb-4">{product.description}</p>
 
-              {/* Price & CTA */}
-              <div className="flex items-center justify-between mt-auto">
+              {/* Price & Notify */}
+              <div className="flex items-center justify-between mt-auto flex-wrap gap-2">
                 <span className="text-matcha-700 font-bold text-lg">{product.price}</span>
-                <button
-                  onClick={() => addItem(product)}
-                  className="bg-matcha-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-matcha-700 transition-colors"
-                >
-                  Add to Cart
-                </button>
+                <NotifyButton />
               </div>
             </div>
           ))}

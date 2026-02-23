@@ -77,7 +77,7 @@ export default function Checkout() {
               <div className="space-y-1 text-sm text-matcha-700">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span>RM {totalPrice.toFixed(2)}</span>
+                  <span>${totalPrice.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Delivery</span>
@@ -85,7 +85,7 @@ export default function Checkout() {
                 </div>
                 <div className="flex justify-between font-bold text-matcha-900 pt-2 border-t border-matcha-100 mt-2">
                   <span>Total Paid</span>
-                  <span>RM {totalPrice.toFixed(2)}</span>
+                  <span>${totalPrice.toFixed(2)}</span>
                 </div>
               </div>
             </div>
@@ -228,7 +228,7 @@ export default function Checkout() {
                             <p className="text-matcha-400 text-xs">× {item.qty}</p>
                           </div>
                           <span className="text-matcha-700 font-semibold text-sm flex-shrink-0">
-                            RM {(parseFloat(item.price.replace('RM ', '')) * item.qty).toFixed(2)}
+                            ${(parseFloat(item.price.replace('$', '')) * item.qty).toFixed(2)}
                           </span>
                         </li>
                       ))}
@@ -237,7 +237,7 @@ export default function Checkout() {
                     <div className="border-t border-matcha-100 pt-4 space-y-2 text-sm">
                       <div className="flex justify-between text-matcha-600">
                         <span>Subtotal</span>
-                        <span>RM {totalPrice.toFixed(2)}</span>
+                        <span>${totalPrice.toFixed(2)}</span>
                       </div>
                       <div className="flex justify-between text-matcha-600">
                         <span>Delivery</span>
@@ -245,7 +245,7 @@ export default function Checkout() {
                       </div>
                       <div className="flex justify-between text-matcha-900 font-bold text-base pt-2 border-t border-matcha-100">
                         <span>Total</span>
-                        <span>RM {(totalPrice + DELIVERY_FEE).toFixed(2)}</span>
+                        <span>${(totalPrice + DELIVERY_FEE).toFixed(2)}</span>
                       </div>
                     </div>
 
