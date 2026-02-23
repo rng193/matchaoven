@@ -31,17 +31,20 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">Follow Us</h4>
             <div className="flex gap-4">
               {[
-                { label: 'Instagram', icon: '📸' },
-                { label: 'Facebook', icon: '💬' },
-                { label: 'TikTok', icon: '🎵' },
-              ].map(({ label, icon }) => (
-                <button
+                { label: 'Instagram', icon: '📸', href: 'https://www.instagram.com/matchaoven' },
+                { label: 'Facebook', icon: '💬', href: '#' },
+                { label: 'TikTok', icon: '🎵', href: '#' },
+              ].map(({ label, icon, href }) => (
+                <a
                   key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-10 h-10 rounded-full bg-matcha-700 hover:bg-matcha-500 flex items-center justify-center text-lg transition-colors"
                 >
                   {icon}
-                </button>
+                </a>
               ))}
             </div>
             <p className="text-matcha-400 text-sm mt-4">@matchaoven</p>
