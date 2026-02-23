@@ -1,59 +1,33 @@
+import Image from 'next/image';
 import { useCart } from '../context/CartContext';
 
 const products = [
   {
     id: 1,
-    name: 'Matcha Butter Cookie',
+    name: 'Strawberry Matcha Latte',
     description: 'Classic butter cookie infused with ceremonial-grade matcha. Melt-in-your-mouth texture.',
-    price: 'RM 15.00',
-    emoji: '🍪',
+    price: '$15.00',
+    image: '/strawberry-matcha-latte.jpg',
     tag: 'Best Seller',
     tagColor: 'bg-matcha-500',
   },
   {
     id: 2,
-    name: 'Matcha Chocolate Chip',
+    name: 'Banana Bread Chocolate Chip',
     description: 'Chewy matcha cookie loaded with dark chocolate chips. A perfect earthy-sweet combo.',
-    price: 'RM 18.00',
-    emoji: '🍫',
+    price: '$18.00',
+    image: '/banana-bread-choc-chip.jpg',
     tag: 'New',
     tagColor: 'bg-cream-400',
   },
   {
     id: 3,
-    name: 'Matcha Red Bean',
+    name: 'Strawberry Pocky',
     description: 'Traditional Japanese flavour pairing — smooth red bean paste in a crisp matcha shell.',
-    price: 'RM 20.00',
-    emoji: '🫘',
+    price: '$20.00',
+    image: '/strawberry-pocky.jpg',
     tag: 'Popular',
     tagColor: 'bg-matcha-700',
-  },
-  {
-    id: 4,
-    name: 'Matcha Cream Sandwich',
-    description: 'Two delicate matcha wafers with a luscious white chocolate matcha cream filling.',
-    price: 'RM 22.00',
-    emoji: '🥪',
-    tag: 'Premium',
-    tagColor: 'bg-matcha-400',
-  },
-  {
-    id: 5,
-    name: 'Matcha Lemon Crinkle',
-    description: 'Zesty lemon meets earthy matcha in a soft, powdered crinkle cookie. Uniquely refreshing.',
-    price: 'RM 17.00',
-    emoji: '🍋',
-    tag: null,
-    tagColor: '',
-  },
-  {
-    id: 6,
-    name: 'Cookie Gift Box (12 pcs)',
-    description: 'A curated assortment of all our signature cookies. Perfect for gifting.',
-    price: 'RM 68.00',
-    emoji: '🎁',
-    tag: 'Gift Set',
-    tagColor: 'bg-matcha-600',
   },
 ];
 
@@ -83,10 +57,10 @@ export default function Products() {
               key={product.id}
               className="bg-cream-50 rounded-3xl p-6 border border-matcha-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
             >
-              {/* Emoji & Tag */}
+              {/* Image & Tag */}
               <div className="relative mb-4">
-                <div className="w-full h-40 bg-matcha-50 rounded-2xl flex items-center justify-center text-7xl">
-                  {product.emoji}
+                <div className="w-full h-48 relative rounded-2xl overflow-hidden">
+                  <Image src={product.image} alt={product.name} layout="fill" objectFit="cover" />
                 </div>
                 {product.tag && (
                   <span

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-matcha-50 via-cream-100 to-cream-200 pt-20">
@@ -47,21 +49,7 @@ export default function Hero() {
 
         {/* Visual */}
         <div className="flex justify-center">
-          <div className="relative w-72 h-72 md:w-96 md:h-96">
-            {/* Decorative circles */}
-            <div className="absolute inset-0 rounded-full bg-matcha-200 opacity-30 animate-pulse" />
-            <div className="absolute inset-6 rounded-full bg-matcha-100 opacity-50" />
-            {/* Cookie emoji placeholder */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-9xl md:text-[10rem] drop-shadow-xl">🍪</div>
-                <div className="mt-4 bg-white bg-opacity-80 rounded-2xl px-6 py-3 shadow-lg">
-                  <p className="font-serif text-matcha-800 font-bold text-lg">Matcha Butter Cookie</p>
-                  <p className="text-matcha-500 font-semibold">From RM 15.00</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Image src="/logo.png" alt="Matcha Oven" width={320} height={320} style={{ objectFit: 'contain' }} className="drop-shadow-xl" />
         </div>
       </div>
     </section>

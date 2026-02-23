@@ -147,9 +147,9 @@ export default function Checkout() {
                   <section className="bg-white rounded-3xl p-8 border border-matcha-100 shadow-sm">
                     <h2 className="font-serif text-2xl font-bold text-matcha-900 mb-6">Delivery Address</h2>
                     <div className="grid sm:grid-cols-2 gap-5">
-                      <Field label="Street Address" name="address" value={form.address} onChange={handleChange} error={errors.address} placeholder="123, Jalan Matcha" className="sm:col-span-2" />
-                      <Field label="City" name="city" value={form.city} onChange={handleChange} error={errors.city} placeholder="Kuala Lumpur" />
-                      <Field label="Postcode" name="postcode" value={form.postcode} onChange={handleChange} error={errors.postcode} placeholder="50000" />
+                      <Field label="Street Address" name="address" value={form.address} onChange={handleChange} error={errors.address} placeholder="123 Matcha Ave" className="sm:col-span-2" />
+                      <Field label="City" name="city" value={form.city} onChange={handleChange} error={errors.city} placeholder="New York" />
+                      <Field label="ZIP Code" name="postcode" value={form.postcode} onChange={handleChange} error={errors.postcode} placeholder="10001" />
                       <div>
                         <label className="block text-matcha-700 font-semibold mb-1 text-sm">State</label>
                         <select
@@ -159,7 +159,7 @@ export default function Checkout() {
                           className={`w-full border rounded-xl px-4 py-3 text-matcha-900 bg-white focus:outline-none focus:ring-2 focus:ring-matcha-400 ${errors.state ? 'border-red-400' : 'border-matcha-200'}`}
                         >
                           <option value="">Select state…</option>
-                          {['Kuala Lumpur', 'Selangor', 'Penang', 'Johor', 'Perak', 'Negeri Sembilan', 'Melaka', 'Kedah', 'Kelantan', 'Pahang', 'Sabah', 'Sarawak', 'Terengganu', 'Perlis', 'Putrajaya', 'Labuan'].map((s) => (
+                          {['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'].map((s) => (
                             <option key={s} value={s}>{s}</option>
                           ))}
                         </select>

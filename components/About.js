@@ -31,10 +31,9 @@ export default function About() {
             Every batch is baked in small quantities to ensure freshness, quality, and that little
             sprinkle of care that makes all the difference.
           </p>
-
           <div className="grid grid-cols-3 gap-6 text-center">
             {[
-              { number: '2020', label: 'Founded' },
+              { number: '2026', label: 'Founded' },
               { number: '50+', label: 'Happy Customers' },
               { number: '100%', label: 'Natural Ingredients' },
             ].map(({ number, label }) => (

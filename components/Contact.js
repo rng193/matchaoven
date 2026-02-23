@@ -24,7 +24,7 @@ export default function Contact() {
                 <input
                   id="name"
                   type="text"
-                  placeholder="Jane Doe"
+                  placeholder="Full Name"
                   className="w-full border border-matcha-200 rounded-xl px-4 py-3 text-matcha-900 placeholder-matcha-300 focus:outline-none focus:ring-2 focus:ring-matcha-400 bg-white"
                 />
               </div>
@@ -35,7 +35,7 @@ export default function Contact() {
                 <input
                   id="email"
                   type="email"
-                  placeholder="jane@example.com"
+                  placeholder="email@example.com"
                   className="w-full border border-matcha-200 rounded-xl px-4 py-3 text-matcha-900 placeholder-matcha-300 focus:outline-none focus:ring-2 focus:ring-matcha-400 bg-white"
                 />
               </div>
@@ -76,9 +76,8 @@ export default function Contact() {
           {/* Contact info */}
           <div className="flex flex-wrap justify-center gap-8 mt-10 pt-8 border-t border-matcha-100">
             {[
-              { icon: '📧', label: 'hello@matchaoven.com' },
-              { icon: '📱', label: '+60 12-345 6789' },
-              { icon: '📍', label: 'Kuala Lumpur, Malaysia' },
+              { icon: '📧', label: 'matchaoven@gmail.com' },
+              { icon: '📍', label: 'New York, NY, USA' },
             ].map(({ icon, label }) => (
               <div key={label} className="flex items-center gap-2 text-matcha-600">
                 <span className="text-xl">{icon}</span>
