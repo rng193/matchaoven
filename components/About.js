@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function About() {
   return (
     <section id="about" className="py-24 bg-gradient-to-br from-matcha-50 to-cream-100">
@@ -5,11 +7,8 @@ export default function About() {
         {/* Visual */}
         <div className="flex justify-center">
           <div className="relative">
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-3xl bg-matcha-200 flex items-center justify-center text-8xl shadow-lg">
-              🍵
-            </div>
-            <div className="absolute -bottom-6 -right-6 w-36 h-36 rounded-2xl bg-matcha-500 flex items-center justify-center text-5xl shadow-md">
-              🌿
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl bg-matcha-200 shadow-lg overflow-hidden">
+              <Image src="/logo.png" alt="Matcha Oven" layout="fill" objectFit="contain" />
             </div>
           </div>
         </div>

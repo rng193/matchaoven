@@ -37,7 +37,7 @@ export default function Hero() {
             {[
               { icon: '🌿', label: 'Premium Matcha' },
               { icon: '🍪', label: 'Small Batch' },
-              { icon: '🚚', label: 'Free Delivery' },
+              { icon: '🚚', label: 'Delivery' },
             ].map(({ icon, label }) => (
               <div key={label} className="flex flex-col items-center text-center">
                 <span className="text-2xl mb-1">{icon}</span>
