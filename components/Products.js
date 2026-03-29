@@ -9,7 +9,6 @@ const products = [
     price: '$15.00',
     image: '/strawberry-matcha-latte.jpg',
     tag: 'Best Seller',
-    tagColor: 'bg-matcha-500',
   },
   {
     id: 2,
@@ -18,7 +17,6 @@ const products = [
     price: '$18.00',
     image: '/banana-bread-choc-chip.jpg',
     tag: 'New',
-    tagColor: 'bg-cream-400',
   },
   {
     id: 3,
@@ -27,7 +25,6 @@ const products = [
     price: '$20.00',
     image: '/strawberry-pocky.jpg',
     tag: 'Popular',
-    tagColor: 'bg-matcha-700',
   },
 ];
 
@@ -52,8 +49,8 @@ function NotifyButton() {
 
   if (submitted) {
     return (
-      <p className="text-matcha-600 text-sm font-semibold">
-        ✓ We'll notify you!
+      <p className="text-matcha-600 text-xs font-medium uppercase tracking-wide">
+        We'll notify you when we're back
       </p>
     );
   }
@@ -66,14 +63,14 @@ function NotifyButton() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="your@email.com"
-          className="flex-1 border border-matcha-200 rounded-full px-3 py-1.5 text-sm text-matcha-900 placeholder-matcha-300 focus:outline-none focus:ring-2 focus:ring-matcha-400"
+          className="flex-1 border border-cream-300 px-3 py-2 text-sm text-matcha-900 placeholder-matcha-300 focus:outline-none focus:border-matcha-500 bg-white"
         />
         <button
           type="submit"
           disabled={loading}
-          className="bg-matcha-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-matcha-700 transition-colors disabled:opacity-60"
+          className="bg-matcha-800 text-white px-4 py-2 text-xs font-medium uppercase tracking-widest hover:bg-matcha-700 transition-colors disabled:opacity-60"
         >
-          {loading ? '...' : 'Notify Me'}
+          {loading ? '...' : 'Submit'}
         </button>
       </form>
     );
@@ -82,7 +79,7 @@ function NotifyButton() {
   return (
     <button
       onClick={() => setOpen(true)}
-      className="border-2 border-matcha-500 text-matcha-600 px-5 py-2 rounded-full text-sm font-semibold hover:bg-matcha-50 transition-colors"
+      className="border border-matcha-700 text-matcha-800 px-5 py-2 text-xs font-medium uppercase tracking-widest hover:bg-cream-100 transition-colors"
     >
       Notify Me
     </button>
@@ -91,56 +88,48 @@ function NotifyButton() {
 
 export default function Products() {
   return (
-    <section id="products" className="py-24 bg-white">
+    <section id="products" className="py-28 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
-        <div className="text-center mb-6">
-          <span className="inline-block bg-matcha-100 text-matcha-700 text-sm font-semibold px-4 py-1 rounded-full mb-4 uppercase tracking-widest">
-            Our Menu
-          </span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-matcha-900 mb-4">
+        <div className="mb-4">
+          <p className="text-xs font-medium uppercase tracking-widest text-matcha-500 mb-4">Our Menu</p>
+          <h2 className="font-serif text-4xl md:text-5xl font-semibold text-matcha-900">
             Signature Cookies
           </h2>
         </div>
 
-        {/* Out of stock banner */}
-        <div className="bg-cream-100 border border-cream-300 rounded-2xl px-6 py-4 text-center mb-12">
-          <p className="text-matcha-700 font-medium">
-            🍵 We're currently restocking our ingredients — cookies coming soon! Enter your email on any product to be the first to know.
+        {/* Out of stock notice */}
+        <div className="border-l-2 border-matcha-400 pl-4 mb-16 mt-8">
+          <p className="text-matcha-700 text-sm leading-relaxed">
+            We're currently restocking our ingredients — cookies coming soon.
+            Enter your email on any product to be the first to know.
           </p>
         </div>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {products.map((product) => (
-            <div
-              key={product.id}
-              className="bg-cream-50 rounded-3xl p-6 border border-matcha-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
-            >
-              {/* Image & Tag */}
-              <div className="relative mb-4">
-                <div className="w-full h-48 relative rounded-2xl overflow-hidden">
-                  <Image src={product.image} alt={product.name} layout="fill" objectFit="contain" />
+            <div key={product.id} className="flex flex-col group">
+              {/* Image */}
+              <div className="relative w-full h-64 bg-cream-100 overflow-hidden mb-5">
+                <Image src={product.image} alt={product.name} layout="fill" objectFit="contain" className="transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute top-3 left-3 flex gap-2">
+                  <span className="bg-white text-matcha-700 text-xs font-medium px-2 py-0.5 uppercase tracking-wide border border-cream-200">
+                    Out of Stock
+                  </span>
                 </div>
                 {product.tag && (
-                  <span className={`absolute top-3 right-3 ${product.tagColor} text-white text-xs font-bold px-3 py-1 rounded-full`}>
+                  <span className="absolute top-3 right-3 bg-matcha-800 text-white text-xs font-medium px-2 py-0.5 uppercase tracking-wide">
                     {product.tag}
                   </span>
                 )}
-                <span className="absolute top-3 left-3 bg-white text-matcha-600 text-xs font-bold px-3 py-1 rounded-full border border-matcha-200">
-                  Out of Stock
-                </span>
               </div>
 
               {/* Info */}
-              <h3 className="font-serif text-xl font-bold text-matcha-900 mb-2">{product.name}</h3>
-              <p className="text-matcha-600 text-sm leading-relaxed flex-1 mb-4">{product.description}</p>
+              <h3 className="font-serif text-xl font-semibold text-matcha-900 mb-2">{product.name}</h3>
+              <p className="text-matcha-600 text-sm leading-relaxed flex-1 mb-5 font-light">{product.description}</p>
 
-              {/* Notify */}
-              <div className="flex items-center justify-end mt-auto flex-wrap gap-2">
-                <NotifyButton />
-
-              </div>
+              <NotifyButton />
             </div>
           ))}
         </div>
