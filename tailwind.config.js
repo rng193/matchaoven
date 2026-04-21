@@ -32,6 +32,13 @@ module.exports = {
           100: '#F3F0EB',
           200: '#E5E0D8',
         },
+        gold: {
+          100: '#F5EDD8',
+          300: '#DEC48A',
+          400: '#C9A96E',
+          500: '#B8955A',
+          600: '#9C7A44',
+        },
       },
       fontFamily: {
         serif: ['"Playfair Display"', 'Georgia', 'Cambria', 'serif'],
